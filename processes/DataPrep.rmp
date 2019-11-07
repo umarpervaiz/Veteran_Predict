@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8"?><process version="9.2.000">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="6.0.002" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <process expanded="true">
+      <operator activated="false" class="retrieve" compatibility="9.2.000" expanded="true" height="68" name="Retrieve pvaDataPreProcessed_1" width="90" x="45" y="952">
+        <parameter key="repository_entry" value="pvaDataPreProcessed_1"/>
+      </operator>
+      <operator activated="false" class="replace_missing_values" compatibility="9.2.000" expanded="true" height="103" name="Replace Missing Values (2)" width="90" x="45" y="1054">
+        <parameter key="return_preprocessing_model" value="false"/>
+        <parameter key="create_view" value="false"/>
+        <parameter key="attribute_filter_type" value="value_type"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="polynominal"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="default" value="value"/>
+        <list key="columns"/>
+        <parameter key="replenishment_value" value="'U'"/>
+      </operator>
+      <operator activated="false" class="generate_attributes" compatibility="9.2.000" expanded="true" height="82" name="Generate Attributes" width="90" x="179" y="1054">
+        <list key="function_descriptions">
+          <parameter key="CHILD07" value="if(missing(CHILD07), &quot;U&quot;, CHILD07)"/>
+          <parameter key="CHILD12" value="if(missing(CHILD12), &quot;U&quot;, CHILD12)"/>
+          <parameter key="MDMAUD_R" value="if(missing(MDMAUD_R), &quot;U&quot;, MDMAUD_R)"/>
+          <parameter key="MDMAUD_F" value="if(missing(MDMAUD_F), &quot;U&quot;, MDMAUD_F)"/>
+          <parameter key="MDMAUD_A" value="if(missing(MDMAUD_A), &quot;U&quot;, MDMAUD_A)"/>
+        </list>
+        <parameter key="keep_all" value="true"/>
+      </operator>
+      <operator activated="false" class="replace_missing_values" compatibility="9.2.000" expanded="true" height="103" name="Replace Missing Values (5)" width="90" x="313" y="1054">
+        <parameter key="return_preprocessing_model" value="false"/>
+        <parameter key="create_view" value="false"/>
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="urbanicity|domainSES"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="nominal"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="default" value="value"/>
+        <list key="columns"/>
+        <parameter key="replenishment_value" value="'U'"/>
+      </operator>
+      <operator activated="false" class="nominal_to_numerical" compatibility="9.2.000" expanded="true" height="103" name="Nominal to Numerical" width="90" x="447" y="1054">
+        <parameter key="return_preprocessing_model" value="false"/>
+        <parameter key="create_view" value="false"/>
+        <parameter key="attribute_filter_type" value="all"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="nominal"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="file_path"/>
+        <parameter key="block_type" value="single_value"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="single_value"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="coding_type" value="dummy coding"/>
+        <parameter key="use_comparison_groups" value="false"/>
+        <list key="comparison_groups"/>
+        <parameter key="unexpected_value_handling" value="all 0 and warning"/>
+        <parameter key="use_underscore_in_name" value="false"/>
+      </operator>
+      <operator activated="false" class="select_attributes" compatibility="9.2.000" expanded="true" height="82" name="Select Attributes (3)" width="90" x="581" y="1054">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="ADATE_18|ADATE_17|ADATE_16|ADATE_15|ADATE_14|ADATE_13|ADATE_12|ADATE_11|ADATE_10|RDATE_9|RDATE_8|RDATE_7|RDATE_6|RDATE_15|RDATE_14|RFA_9 = S4G|RFA_9 = S4F|RFA_9 = S4E|RFA_9 = S4D|RFA_9 = S4C|RFA_9 = S4B|RFA_9 = S3G|RFA_9 = S3F|RFA_9 = S3E|RFA_9 = S3D|RFA_9 = S3C|RFA_9 = S3B|RFA_9 = S2G|RFA_9 = S2F|RFA_9 = S2E|RFA_9 = S2D|RFA_9 = S2C|RFA_9 = S2B|RFA_9 = P1G|RFA_9 = P1F|RFA_9 = P1E|RFA_9 = P1D|RFA_9 = P1C|RFA_9 = P1A|RFA_9 = N4G|RFA_9 = N4F|RFA_9 = N4E|RFA_9 = N4D|RFA_9 = N4C|RFA_9 = N3G|RFA_9 = N3F|RFA_9 = N3E|RFA_9 = N3D|RFA_9 = N3C|RFA_9 = N2G|RFA_9 = N2F|RFA_9 = N2E|RFA_9 = N2D|RFA_9 = N2C|RFA_9 = N1G|RFA_9 = N1F|RFA_9 = N1E|RFA_9 = N1D|RFA_9 = N1C|RFA_9 = L4G|RFA_9 = L4F|RFA_9 = L4E|RFA_9 = L4D|RFA_9 = L3G|RFA_9 = L3F|RFA_9 = L3E|RFA_9 = L3D|RFA_9 = L2G|RFA_9 = L2F|RFA_9 = L2E|RFA_9 = L2D|RFA_9 = L1G|RFA_9 = L1F|RFA_9 = L1E|RFA_9 = L1D|RFA_9 = I4G|RFA_9 = I4F|RFA_9 = I4E|RFA_9 = I3G|RFA_9 = I3F|RFA_9 = I3E|RFA_9 = I2G|RFA_9 = I2F|RFA_9 = I2E|RFA_9 = I1G|RFA_9 = I1F|RFA_9 = F1G|RFA_9 = F1F|RFA_9 = F1E|RFA_9 = F1D|RFA_9 = F1C|RFA_9 = A4G|RFA_9 = A4F|RFA_9 = A4E|RFA_9 = A4D|RFA_9 = A4C|RFA_9 = A3G|RFA_9 = A3F|RFA_9 = A3E|RFA_9 = A3D|RFA_9 = A3C|RFA_9 = A2G|RFA_9 = A2F|RFA_9 = A2E|RFA_9 = A2D|RFA_9 = A2C|RFA_9 = A1G|RFA_9 = A1F|RFA_9 = A1E|RFA_9 = A1D|RFA_9 = A1C|RFA_9 = A1A|RFA_8 = U1G|RFA_8 = U1F|RFA_8 = S4G|RFA_8 = S4F|RFA_8 = S4E|RFA_8 = S4D|RFA_8 = S4C|RFA_8 = S4B|RFA_8 = S3G|RFA_8 = S3F|RFA_8 = S3E|RFA_8 = S3D|RFA_8 = S3C|RFA_8 = S3B|RFA_8 = S2G|RFA_8 = S2F|RFA_8 = S2E|RFA_8 = S2D|RFA_8 = S2C|RFA_8 = P1G|RFA_8 = P1F|RFA_8 = P1E|RFA_8 = P1D|RFA_8 = P1C|RFA_8 = P1A|RFA_8 = N4G|RFA_8 = N4F|RFA_8 = N4E|RFA_8 = N4D|RFA_8 = N4C|RFA_8 = N3G|RFA_8 = N3F|RFA_8 = N3E|RFA_8 = N3D|RFA_8 = N2G|RFA_8 = N2F|RFA_8 = N2E|RFA_8 = N2D|RFA_8 = N2C|RFA_8 = N1G|RFA_8 = N1F|RFA_8 = N1E|RFA_8 = N1D|RFA_8 = N1C|RFA_8 = L4G|RFA_8 = L4F|RFA_8 = L4E|RFA_8 = L4D|RFA_8 = L3G|RFA_8 = L3F|RFA_8 = L3E|RFA_8 = L3D|RFA_8 = L2G|RFA_8 = L2F|RFA_8 = L2E|RFA_8 = L2D|RFA_8 = L1G|RFA_8 = L1F|RFA_8 = L1E|RFA_8 = L1D|RFA_8 = I4G|RFA_8 = I4F|RFA_8 = I4E|RFA_8 = I3G|RFA_8 = I3F|RFA_8 = I2G|RFA_8 = I2E|RFA_8 = I1G|RFA_8 = F1G|RFA_8 = F1F|RFA_8 = F1E|RFA_8 = F1D|RFA_8 = F1C|RFA_8 = A4G|RFA_8 = A4F|RFA_8 = A4E|RFA_8 = A4D|RFA_8 = A4C|RFA_8 = A3G|RFA_8 = A3F|RFA_8 = A3E|RFA_8 = A3D|RFA_8 = A3C|RFA_8 = A2G|RFA_8 = A2F|RFA_8 = A2E|RFA_8 = A2D|RFA_8 = A2C|RFA_8 = A1G|RFA_8 = A1F|RFA_8 = A1E|RFA_8 = A1D|RFA_8 = A1C|RFA_8 = A1B|RFA_7 = S4G|RFA_7 = S4F|RFA_7 = S4E|RFA_7 = S4D|RFA_7 = S4C|RFA_7 = S4B|RFA_7 = S3G|RFA_7 = S3F|RFA_7 = S3E|RFA_7 = S3D|RFA_7 = S3C|RFA_7 = S3B|RFA_7 = S2G|RFA_7 = S2F|RFA_7 = S2E|RFA_7 = S2D|RFA_7 = S2C|RFA_7 = P1G|RFA_7 = P1F|RFA_7 = P1E|RFA_7 = P1D|RFA_7 = P1A|RFA_7 = N4G|RFA_7 = N4F|RFA_7 = N4E|RFA_7 = N4D|RFA_7 = N3G|RFA_7 = N3F|RFA_7 = N3E|RFA_7 = N3D|RFA_7 = N2G|RFA_7 = N2F|RFA_7 = N2E|RFA_7 = N2D|RFA_7 = N2C|RFA_7 = N1G|RFA_7 = N1F|RFA_7 = N1E|RFA_7 = N1D|RFA_7 = N1C|RFA_7 = L4G|RFA_7 = L4F|RFA_7 = L4E|RFA_7 = L4D|RFA_7 = L3G|RFA_7 = L3F|RFA_7 = L3E|RFA_7 = L3D|RFA_7 = L2G|RFA_7 = L2F|RFA_7 = L2E|RFA_7 = L2D|RFA_7 = L1G|RFA_7 = L1F|RFA_7 = L1E|RFA_7 = L1D|RFA_7 = I4G|RFA_7 = I4F|RFA_7 = I4E|RFA_7 = I3G|RFA_7 = I3F|RFA_7 = I2G|RFA_7 = I2E|RFA_7 = I1G|RFA_7 = F1G|RFA_7 = F1F|RFA_7 = F1E|RFA_7 = F1D|RFA_7 = F1C|RFA_7 = A4G|RFA_7 = A4F|RFA_7 = A4E|RFA_7 = A4D|RFA_7 = A4C|RFA_7 = A3G|RFA_7 = A3F|RFA_7 = A3E|RFA_7 = A3D|RFA_7 = A3C|RFA_7 = A2G|RFA_7 = A2F|RFA_7 = A2E|RFA_7 = A2D|RFA_7 = A2C|RFA_7 = A1G|RFA_7 = A1F|RFA_7 = A1E|RFA_7 = A1D|RFA_7 = A1C|RFA_7 = A1B|RFA_6 = U1G|RFA_6 = U1F|RFA_6 = U1E|RFA_6 = S4G|RFA_6 = S4F|RFA_6 = S4E|RFA_6 = S4D|RFA_6 = S4C|RFA_6 = S4B|RFA_6 = S3G|RFA_6 = S3F|RFA_6 = S3E|RFA_6 = S3D|RFA_6 = S3C|RFA_6 = S2G|RFA_6 = S2F|RFA_6 = S2E|RFA_6 = S2D|RFA_6 = S2C|RFA_6 = S2B|RFA_6 = P1A|RFA_6 = N4G|RFA_6 = N4F|RFA_6 = N4E|RFA_6 = N4D|RFA_6 = N3G|RFA_6 = N3F|RFA_6 = N3E|RFA_6 = N3D|RFA_6 = N2G|RFA_6 = N2F|RFA_6 = N2E|RFA_6 = N2D|RFA_6 = N2C|RFA_6 = N1G|RFA_6 = N1F|RFA_6 = N1E|RFA_6 = N1D|RFA_6 = L4G|RFA_6 = L4F|RFA_6 = L4E|RFA_6 = L4D|RFA_6 = L3G|RFA_6 = L3F|RFA_6 = L3E|RFA_6 = L3D|RFA_6 = L3C|RFA_6 = L2G|RFA_6 = L2F|RFA_6 = L2E|RFA_6 = L2D|RFA_6 = L1G|RFA_6 = L1F|RFA_6 = L1E|RFA_6 = L1D|RFA_6 = L1C|RFA_6 = I4G|RFA_6 = I4F|RFA_6 = I4E|RFA_6 = I3F|RFA_6 = I3E|RFA_6 = I2G|RFA_6 = I2F|RFA_6 = I2E|RFA_6 = I1G|RFA_6 = I1F|RFA_6 = I1E|RFA_6 = F1G|RFA_6 = F1F|RFA_6 = F1E|RFA_6 = F1D|RFA_6 = F1C|RFA_6 = A4G|RFA_6 = A4F|RFA_6 = A4E|RFA_6 = A4D|RFA_6 = A4C|RFA_6 = A3G|RFA_6 = A3F|RFA_6 = A3E|RFA_6 = A3D|RFA_6 = A3C|RFA_6 = A2G|RFA_6 = A2F|RFA_6 = A2E|RFA_6 = A2D|RFA_6 = A2C|RFA_6 = A1G|RFA_6 = A1F|RFA_6 = A1E|RFA_6 = A1D|RFA_6 = A1C|RFA_6 = A1B|RFA_6 = A1A|RFA_5 = S4G|RFA_5 = S4F|RFA_5 = S4E|RFA_5 = S4D|RFA_5 = S3G|RFA_5 = S3F|RFA_5 = S3E|RFA_5 = S2G|RFA_5 = S2F|RFA_5 = S2E|RFA_5 = N4G|RFA_5 = N4F|RFA_5 = N4E|RFA_5 = N4D|RFA_5 = N3G|RFA_5 = N3F|RFA_5 = N3E|RFA_5 = N2G|RFA_5 = N2F|RFA_5 = N1G|RFA_5 = L4G|RFA_5 = L4F|RFA_5 = L3G|RFA_5 = L3F|RFA_5 = L2G|RFA_5 = L1G|RFA_5 = A4G|RFA_5 = A4F|RFA_5 = A4E|RFA_5 = A4D|RFA_5 = A3G|RFA_5 = A3F|RFA_5 = A3E|RFA_5 = A3D|RFA_5 = A2G|RFA_5 = A2F|RFA_5 = A2E|RFA_5 = A1G|RFA_5 = A1F|RFA_4 = S4G|RFA_4 = S4F|RFA_4 = S4E|RFA_4 = S4D|RFA_4 = S4C|RFA_4 = S4B|RFA_4 = S3G|RFA_4 = S3F|RFA_4 = S3E|RFA_4 = S3D|RFA_4 = S2G|RFA_4 = S2F|RFA_4 = S2E|RFA_4 = S2D|RFA_4 = N4G|RFA_4 = N4F|RFA_4 = N4E|RFA_4 = N4D|RFA_4 = N3G|RFA_4 = N3F|RFA_4 = N3E|RFA_4 = N3D|RFA_4 = N2G|RFA_4 = N2F|RFA_4 = N2E|RFA_4 = N2D|RFA_4 = N2C|RFA_4 = N1G|RFA_4 = N1F|RFA_4 = N1E|RFA_4 = L4G|RFA_4 = L3G|RFA_4 = L3F|RFA_4 = L2G|RFA_4 = L2F|RFA_4 = L1G|RFA_4 = L1F|RFA_4 = F1G|RFA_4 = F1F|RFA_4 = F1E|RFA_4 = F1D|RFA_4 = A4G|RFA_4 = A4F|RFA_4 = A4E|RFA_4 = A4D|RFA_4 = A4C|RFA_4 = A3G|RFA_4 = A3F|RFA_4 = A3E|RFA_4 = A3D|RFA_4 = A3C|RFA_4 = A2G|RFA_4 = A2F|RFA_4 = A2E|RFA_4 = A2D|RFA_4 = A1G|RFA_4 = A1F|RFA_4 = A1E|RFA_4 = A1D|RFA_3 = S4G|RFA_3 = S4F|RFA_3 = S4E|RFA_3 = S4D|RFA_3 = S4C|RFA_3 = S4B|RFA_3 = S3G|RFA_3 = S3F|RFA_3 = S3E|RFA_3 = S3D|RFA_3 = S2G|RFA_3 = S2F|RFA_3 = S2E|RFA_3 = S2D|RFA_3 = N4G|RFA_3 = N4F|RFA_3 = N4E|RFA_3 = N4D|RFA_3 = N3G|RFA_3 = N3F|RFA_3 = N3E|RFA_3 = N3D|RFA_3 = N2G|RFA_3 = N2F|RFA_3 = N2E|RFA_3 = N2D|RFA_3 = N1G|RFA_3 = N1F|RFA_3 = N1E|RFA_3 = N1D|RFA_3 = L4G|RFA_3 = L3G|RFA_3 = L3F|RFA_3 = L3E|RFA_3 = L2G|RFA_3 = L2F|RFA_3 = L1G|RFA_3 = L1F|RFA_3 = F1G|RFA_3 = F1F|RFA_3 = F1E|RFA_3 = F1D|RFA_3 = A4G|RFA_3 = A4F|RFA_3 = A4E|RFA_3 = A4D|RFA_3 = A4C|RFA_3 = A3G|RFA_3 = A3F|RFA_3 = A3E|RFA_3 = A3D|RFA_3 = A2G|RFA_3 = A2F|RFA_3 = A2E|RFA_3 = A2D|RFA_3 = A1G|RFA_3 = A1F|RFA_3 = A1E|RFA_3 = A1D|RFA_2R = L|RFA_17 = S3G|RFA_17 = S3F|RFA_17 = S3E|RFA_17 = S3D|RFA_17 = S3C|RFA_17 = S3B|RFA_17 = S2G|RFA_17 = S2F|RFA_17 = S2E|RFA_17 = S2D|RFA_17 = S2C|RFA_17 = S2B|RFA_17 = P1G|RFA_17 = P1F|RFA_17 = P1E|RFA_17 = P1D|RFA_17 = P1C|RFA_17 = P1A|RFA_17 = N4G|RFA_17 = N4F|RFA_17 = N4E|RFA_17 = N4D|RFA_17 = N4C|RFA_17 = N3G|RFA_17 = N3F|RFA_17 = N3E|RFA_17 = N3D|RFA_17 = N3C|RFA_17 = N2G|RFA_17 = N2F|RFA_17 = N2E|RFA_17 = N2D|RFA_17 = N2C|RFA_17 = N1G|RFA_17 = N1F|RFA_17 = N1E|RFA_17 = N1D|RFA_17 = N1C|RFA_17 = L4G|RFA_17 = L4F|RFA_17 = L4E|RFA_17 = L4D|RFA_17 = L3G|RFA_17 = L3F|RFA_17 = L3E|RFA_17 = L3D|RFA_17 = L3C|RFA_17 = L2G|RFA_17 = L2F|RFA_17 = L2E|RFA_17 = L2D|RFA_17 = L2C|RFA_17 = L1G|RFA_17 = L1F|RFA_17 = L1E|RFA_17 = L1D|RFA_17 = L1C|RFA_17 = I4G|RFA_17 = I4F|RFA_17 = I4E|RFA_17 = I4D|RFA_17 = I3G|RFA_17 = I3F|RFA_17 = I3E|RFA_17 = I3D|RFA_17 = I2G|RFA_17 = I2F|RFA_17 = I2E|RFA_17 = I2D|RFA_17 = I1G|RFA_17 = I1F|RFA_17 = I1E|RFA_17 = I1D|RFA_17 = F1G|RFA_17 = F1F|RFA_17 = F1E|RFA_17 = F1D|RFA_17 = F1C|RFA_17 = A4G|RFA_17 = A4F|RFA_17 = A4E|RFA_17 = A4D|RFA_17 = A4C|RFA_17 = A3G|RFA_17 = A3F|RFA_17 = A3E|RFA_17 = A3D|RFA_17 = A3C|RFA_17 = A2G|RFA_17 = A2F|RFA_17 = A2E|RFA_17 = A2D|RFA_17 = A2C|RFA_17 = A2B|RFA_17 = A1G|RFA_17 = A1F|RFA_17 = A1E|RFA_17 = A1D|RFA_17 = A1C|RFA_17 = A1B|RFA_16 = S4C|RFA_16 = S4B|RFA_16 = S3G|RFA_16 = S3F|RFA_16 = S3E|RFA_16 = S3D|RFA_16 = S3C|RFA_16 = S3B|RFA_16 = S2G|RFA_16 = S2F|RFA_16 = S2E|RFA_16 = S2D|RFA_16 = S2C|RFA_16 = S2B|RFA_16 = N4G|RFA_16 = N4F|RFA_16 = N4E|RFA_16 = N4D|RFA_16 = N4C|RFA_16 = N3G|RFA_16 = N3F|RFA_16 = N3E|RFA_16 = N3D|RFA_16 = N3C|RFA_16 = N2G|RFA_16 = N2F|RFA_16 = N2E|RFA_16 = N2D|RFA_16 = N2C|RFA_16 = N1G|RFA_16 = N1F|RFA_16 = N1E|RFA_16 = N1D|RFA_16 = N1C|RFA_16 = N1B|RFA_16 = L4G|RFA_16 = L4F|RFA_16 = L4E|RFA_16 = L4D|RFA_16 = L4C|RFA_16 = L3G|RFA_16 = L3F|RFA_16 = L3E|RFA_16 = L3D|RFA_16 = L3C|RFA_16 = L2G|RFA_16 = L2F|RFA_16 = L2E|RFA_16 = L2D|RFA_16 = L2C|RFA_16 = L1G|RFA_16 = L1F|RFA_16 = L1E|RFA_16 = L1D|RFA_16 = L1C|RFA_16 = I4G|RFA_16 = I4F|RFA_16 = I4E|RFA_16 = I4D|RFA_16 = I3G|RFA_16 = I3F|RFA_16 = I3E|RFA_16 = I3D|RFA_16 = I2G|RFA_16 = I2F|RFA_16 = I2E|RFA_16 = I2D|RFA_16 = I1G|RFA_16 = I1F|RFA_16 = I1E|RFA_16 = I1D|RFA_16 = I1C|RFA_16 = I1B|RFA_16 = F1G|RFA_16 = F1F|RFA_16 = F1E|RFA_16 = F1D|RFA_16 = F1C|RFA_16 = A4G|RFA_16 = A4F|RFA_16 = A4E|RFA_16 = A4D|RFA_16 = A4C|RFA_16 = A3G|RFA_16 = A3F|RFA_16 = A3E|RFA_16 = A3D|RFA_16 = A3C|RFA_16 = A2G|RFA_16 = A2F|RFA_16 = A2E|RFA_16 = A2D|RFA_16 = A2C|RFA_16 = A1G|RFA_16 = A1F|RFA_16 = A1E|RFA_16 = A1D|RFA_16 = A1C|RFA_16 = A1B|RFA_16 = A1A|RFA_15 = S4G|RFA_15 = S4F|RFA_15 = S4E|RFA_15 = S4D|RFA_15 = S3G|RFA_15 = S3F|RFA_15 = S3E|RFA_15 = S3D|RFA_15 = S2G|RFA_15 = S2F|RFA_15 = N4G|RFA_15 = N4F|RFA_15 = N4E|RFA_15 = N4D|RFA_15 = N3G|RFA_15 = N3F|RFA_15 = N3E|RFA_15 = N3D|RFA_15 = N2G|RFA_15 = N2F|RFA_15 = N2E|RFA_15 = A4G|RFA_15 = A4F|RFA_15 = A4E|RFA_15 = A4D|RFA_15 = A3G|RFA_15 = A3F|RFA_15 = A3E|RFA_15 = A3D|RFA_15 = A2G|RFA_15 = A2F|RFA_15 = A1G|RFA_14 = S4G|RFA_14 = S4F|RFA_14 = S4E|RFA_14 = S4D|RFA_14 = S4C|RFA_14 = S4B|RFA_14 = S3G|RFA_14 = S3F|RFA_14 = S3E|RFA_14 = S3D|RFA_14 = S3C|RFA_14 = S3B|RFA_14 = S2G|RFA_14 = S2F|RFA_14 = S2E|RFA_14 = S2D|RFA_14 = S2C|RFA_14 = P1G|RFA_14 = P1F|RFA_14 = P1E|RFA_14 = P1D|RFA_14 = P1C|RFA_14 = P1A|RFA_14 = N4G|RFA_14 = N4F|RFA_14 = N4E|RFA_14 = N4D|RFA_14 = N4C|RFA_14 = N3G|RFA_14 = N3F|RFA_14 = N3E|RFA_14 = N3D|RFA_14 = N3C|RFA_14 = N2G|RFA_14 = N2F|RFA_14 = N2E|RFA_14 = N2D|RFA_14 = N2C|RFA_14 = N1G|RFA_14 = N1F|RFA_14 = N1E|RFA_14 = N1D|RFA_14 = N1C|RFA_14 = L4G|RFA_14 = L4F|RFA_14 = L4E|RFA_14 = L4D|RFA_14 = L3G|RFA_14 = L3F|RFA_14 = L3E|RFA_14 = L3D|RFA_14 = L2G|RFA_14 = L2F|RFA_14 = L2E|RFA_14 = L2D|RFA_14 = L1G|RFA_14 = L1F|RFA_14 = I4G|RFA_14 = I4F|RFA_14 = I4E|RFA_14 = I3E|RFA_14 = F1G|RFA_14 = F1F|RFA_14 = F1E|RFA_14 = F1D|RFA_14 = F1C|RFA_14 = A4G|RFA_14 = A4F|RFA_14 = A4E|RFA_14 = A4D|RFA_14 = A4C|RFA_14 = A3G|RFA_14 = A3F|RFA_14 = A3E|RFA_14 = A3D|RFA_14 = A3C|RFA_14 = A2G|RFA_14 = A2F|RFA_14 = A2E|RFA_14 = A2D|RFA_14 = A2C|RFA_14 = A1G|RFA_14 = A1F|RFA_14 = A1E|RFA_14 = A1D|RFA_14 = A1C"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="true"/>
+        <parameter key="include_special_attributes" value="false"/>
+      </operator>
+      <operator activated="false" class="split_validation" compatibility="9.2.000" expanded="true" height="166" name="Validation" width="90" x="715" y="1003">
+        <parameter key="create_complete_model" value="false"/>
+        <parameter key="split" value="relative"/>
+        <parameter key="split_ratio" value="0.7"/>
+        <parameter key="training_set_size" value="100"/>
+        <parameter key="test_set_size" value="-1"/>
+        <parameter key="sampling_type" value="shuffled sampling"/>
+        <parameter key="use_local_random_seed" value="true"/>
+        <parameter key="local_random_seed" value="12345"/>
+        <process expanded="true">
+          <operator activated="false" class="h2o:logistic_regression" compatibility="7.5.000" expanded="true" height="124" name="Logistic Regression" width="90" x="313" y="34">
+            <parameter key="solver" value="AUTO"/>
+            <parameter key="reproducible" value="false"/>
+            <parameter key="maximum_number_of_threads" value="4"/>
+            <parameter key="use_regularization" value="true"/>
+            <parameter key="lambda" value="1.0E-5"/>
+            <parameter key="lambda_search" value="false"/>
+            <parameter key="number_of_lambdas" value="0"/>
+            <parameter key="lambda_min_ratio" value="0.0"/>
+            <parameter key="early_stopping" value="true"/>
+            <parameter key="stopping_rounds" value="3"/>
+            <parameter key="stopping_tolerance" value="0.001"/>
+            <parameter key="alpha" value="1.0"/>
+            <parameter key="standardize" value="true"/>
+            <parameter key="non-negative_coefficients" value="false"/>
+            <parameter key="add_intercept" value="true"/>
+            <parameter key="compute_p-values" value="true"/>
+            <parameter key="remove_collinear_columns" value="true"/>
+            <parameter key="missing_values_handling" value="MeanImputation"/>
+            <parameter key="max_iterations" value="0"/>
+            <parameter key="max_runtime_seconds" value="0"/>
+          </operator>
+          <operator activated="false" class="concurrency:parallel_decision_tree" compatibility="9.2.000" expanded="true" height="103" name="Decision Tree" width="90" x="112" y="544">
+            <parameter key="criterion" value="gain_ratio"/>
+            <parameter key="maximal_depth" value="20"/>
+            <parameter key="apply_pruning" value="false"/>
+            <parameter key="confidence" value="0.25"/>
+            <parameter key="apply_prepruning" value="false"/>
+            <parameter key="minimal_gain" value="0.1"/>
+            <parameter key="minimal_leaf_size" value="2"/>
+            <parameter key="minimal_size_for_split" value="4"/>
+            <parameter key="number_of_prepruning_alternatives" value="3"/>
+          </operator>
+          <operator activated="true" class="concurrency:parallel_random_forest" compatibility="9.2.000" expanded="true" height="103" name="Random Forest (2)" width="90" x="45" y="34">
+            <parameter key="number_of_trees" value="100"/>
+            <parameter key="criterion" value="gain_ratio"/>
+            <parameter key="maximal_depth" value="10"/>
+            <parameter key="apply_pruning" value="false"/>
+            <parameter key="confidence" value="0.1"/>
+            <parameter key="apply_prepruning" value="false"/>
+            <parameter key="minimal_gain" value="0.01"/>
+            <parameter key="minimal_leaf_size" value="2"/>
+            <parameter key="minimal_size_for_split" value="4"/>
+            <parameter key="number_of_prepruning_alternatives" value="3"/>
+            <parameter key="random_splits" value="false"/>
+            <parameter key="guess_subset_ratio" value="true"/>
+            <parameter key="subset_ratio" value="0.2"/>
+            <parameter key="voting_strategy" value="confidence vote"/>
+            <parameter key="use_local_random_seed" value="false"/>
+            <parameter key="local_random_seed" value="1992"/>
+            <parameter key="enable_parallel_execution" value="true"/>
+          </operator>
+          <operator activated="true" class="apply_model" compatibility="7.1.001" expanded="true" height="82" name="Apply Model" width="90" x="45" y="238">
+            <list key="application_parameters"/>
+            <parameter key="create_view" value="false"/>
+          </operator>
+          <operator activated="true" class="performance_binominal_classification" compatibility="9.2.000" expanded="true" height="82" name="Performance (3)" width="90" x="112" y="391">
+            <parameter key="main_criterion" value="first"/>
+            <parameter key="accuracy" value="true"/>
+            <parameter key="classification_error" value="false"/>
+            <parameter key="kappa" value="false"/>
+            <parameter key="AUC (optimistic)" value="false"/>
+            <parameter key="AUC" value="false"/>
+            <parameter key="AUC (pessimistic)" value="false"/>
+            <parameter key="precision" value="false"/>
+            <parameter key="recall" value="false"/>
+            <parameter key="lift" value="false"/>
+            <parameter key="fallout" value="false"/>
+            <parameter key="f_measure" value="false"/>
+            <parameter key="false_positive" value="false"/>
+            <parameter key="false_negative" value="false"/>
+            <parameter key="true_positive" value="false"/>
+            <parameter key="true_negative" value="false"/>
+            <parameter key="sensitivity" value="false"/>
+            <parameter key="specificity" value="false"/>
+            <parameter key="youden" value="false"/>
+            <parameter key="positive_predictive_value" value="false"/>
+            <parameter key="negative_predictive_value" value="false"/>
+            <parameter key="psep" value="false"/>
+            <parameter key="skip_undefined_labels" value="true"/>
+            <parameter key="use_example_weights" value="true"/>
+          </operator>
+          <operator activated="true" class="create_lift_chart" compatibility="9.2.000" expanded="true" height="103" name="Create Lift Chart" width="90" x="246" y="238">
+            <parameter key="target_class" value="1"/>
+            <parameter key="binning_type" value="frequency"/>
+            <parameter key="number_of_bins" value="10"/>
+            <parameter key="size_of_bins" value="1000"/>
+            <parameter key="automatic_number_of_digits" value="true"/>
+            <parameter key="number_of_digits" value="-1"/>
+            <parameter key="show_bar_labels" value="true"/>
+            <parameter key="show_cumulative_labels" value="false"/>
+            <parameter key="rotate_labels" value="false"/>
+          </operator>
+          <connect from_port="training" to_op="Random Forest (2)" to_port="training set"/>
+          <connect from_op="Random Forest (2)" from_port="model" to_op="Apply Model" to_port="model"/>
+          <connect from_op="Random Forest (2)" from_port="exampleSet" to_op="Apply Model" to_port="unlabelled data"/>
+          <connect from_op="Apply Model" from_port="labelled data" to_op="Performance (3)" to_port="labelled data"/>
+          <connect from_op="Apply Model" from_port="model" to_op="Create Lift Chart" to_port="model"/>
+          <connect from_op="Performance (3)" from_port="performance" to_port="through 2"/>
+          <connect from_op="Performance (3)" from_port="example set" to_op="Create Lift Chart" to_port="example set"/>
+          <connect from_op="Create Lift Chart" from_port="model" to_port="model"/>
+          <portSpacing port="source_training" spacing="0"/>
+          <portSpacing port="sink_model" spacing="0"/>
+          <portSpacing port="sink_through 1" spacing="162"/>
+          <portSpacing port="sink_through 2" spacing="0"/>
+          <portSpacing port="sink_through 3" spacing="0"/>
+        </process>
+        <process expanded="true">
+          <operator activated="true" class="apply_model" compatibility="7.1.001" expanded="true" height="82" name="Apply Model (2)" width="90" x="45" y="30">
+            <list key="application_parameters"/>
+            <parameter key="create_view" value="false"/>
+          </operator>
+          <operator activated="true" class="performance_binominal_classification" compatibility="9.2.000" expanded="true" height="82" name="Performance (2)" width="90" x="179" y="30">
+            <parameter key="main_criterion" value="first"/>
+            <parameter key="accuracy" value="true"/>
+            <parameter key="classification_error" value="false"/>
+            <parameter key="kappa" value="false"/>
+            <parameter key="AUC (optimistic)" value="false"/>
+            <parameter key="AUC" value="false"/>
+            <parameter key="AUC (pessimistic)" value="false"/>
+            <parameter key="precision" value="false"/>
+            <parameter key="recall" value="false"/>
+            <parameter key="lift" value="false"/>
+            <parameter key="fallout" value="false"/>
+            <parameter key="f_measure" value="false"/>
+            <parameter key="false_positive" value="false"/>
+            <parameter key="false_negative" value="false"/>
+            <parameter key="true_positive" value="false"/>
+            <parameter key="true_negative" value="false"/>
+            <parameter key="sensitivity" value="false"/>
+            <parameter key="specificity" value="false"/>
+            <parameter key="youden" value="false"/>
+            <parameter key="positive_predictive_value" value="false"/>
+            <parameter key="negative_predictive_value" value="false"/>
+            <parameter key="psep" value="false"/>
+            <parameter key="skip_undefined_labels" value="true"/>
+            <parameter key="use_example_weights" value="true"/>
+          </operator>
+          <operator activated="true" class="create_lift_chart" compatibility="9.2.000" expanded="true" height="103" name="Create Lift Chart (2)" width="90" x="179" y="238">
+            <parameter key="target_class" value="1"/>
+            <parameter key="binning_type" value="frequency"/>
+            <parameter key="number_of_bins" value="10"/>
+            <parameter key="size_of_bins" value="1000"/>
+            <parameter key="automatic_number_of_digits" value="true"/>
+            <parameter key="number_of_digits" value="-1"/>
+            <parameter key="show_bar_labels" value="true"/>
+            <parameter key="show_cumulative_labels" value="false"/>
+            <parameter key="rotate_labels" value="false"/>
+          </operator>
+          <connect from_port="model" to_op="Apply Model (2)" to_port="model"/>
+          <connect from_port="test set" to_op="Apply Model (2)" to_port="unlabelled data"/>
+          <connect from_port="through 1" to_port="averagable 2"/>
+          <connect from_port="through 2" to_port="averagable 3"/>
+          <connect from_op="Apply Model (2)" from_port="labelled data" to_op="Performance (2)" to_port="labelled data"/>
+          <connect from_op="Apply Model (2)" from_port="model" to_op="Create Lift Chart (2)" to_port="model"/>
+          <connect from_op="Performance (2)" from_port="performance" to_port="averagable 1"/>
+          <connect from_op="Performance (2)" from_port="example set" to_op="Create Lift Chart (2)" to_port="example set"/>
+          <portSpacing port="source_model" spacing="0"/>
+          <portSpacing port="source_test set" spacing="0"/>
+          <portSpacing port="source_through 1" spacing="144"/>
+          <portSpacing port="source_through 2" spacing="0"/>
+          <portSpacing port="source_through 3" spacing="0"/>
+          <portSpacing port="sink_averagable 1" spacing="0"/>
+          <portSpacing port="sink_averagable 2" spacing="162"/>
+          <portSpacing port="sink_averagable 3" spacing="0"/>
+          <portSpacing port="sink_averagable 4" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="false" class="store" compatibility="9.2.000" expanded="true" height="68" name="Store" width="90" x="782" y="340">
+        <parameter key="repository_entry" value="//Local Repository/data/Newdata"/>
+      </operator>
+      <operator activated="false" class="select_attributes" compatibility="9.2.000" expanded="true" height="82" name="Select Attributes" width="90" x="380" y="238">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="DOB|TCODE||STATE"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="true"/>
+        <parameter key="include_special_attributes" value="false"/>
+      </operator>
+      <operator activated="false" class="work_on_subset" compatibility="9.2.000" expanded="true" height="82" name="interests_PCA" width="90" x="380" y="391">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="BIBLE|BOATS|CARDS|CATLG|CDPLAY|CRAFTS|FISHER|GARDENIN|HOMEE|KIDSTUFF|PCOWNERS|PETS|PHOTO|PLATES|STEREO|VETERANS|WALKER|"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="name_conflict_handling" value="error"/>
+        <parameter key="role_conflict_handling" value="error"/>
+        <parameter key="keep_subset_only" value="false"/>
+        <parameter key="deliver_inner_results" value="false"/>
+        <parameter key="remove_roles" value="false"/>
+        <process expanded="true">
+          <operator activated="true" class="nominal_to_numerical" compatibility="7.1.001" expanded="true" height="103" name="Nominal to Numerical (2)" width="90" x="45" y="30">
+            <parameter key="return_preprocessing_model" value="false"/>
+            <parameter key="create_view" value="false"/>
+            <parameter key="attribute_filter_type" value="all"/>
+            <parameter key="attribute" value=""/>
+            <parameter key="attributes" value=""/>
+            <parameter key="use_except_expression" value="false"/>
+            <parameter key="value_type" value="nominal"/>
+            <parameter key="use_value_type_exception" value="false"/>
+            <parameter key="except_value_type" value="file_path"/>
+            <parameter key="block_type" value="single_value"/>
+            <parameter key="use_block_type_exception" value="false"/>
+            <parameter key="except_block_type" value="single_value"/>
+            <parameter key="invert_selection" value="false"/>
+            <parameter key="include_special_attributes" value="false"/>
+            <parameter key="coding_type" value="unique integers"/>
+            <parameter key="use_comparison_groups" value="false"/>
+            <list key="comparison_groups"/>
+            <parameter key="unexpected_value_handling" value="all 0 and warning"/>
+            <parameter key="use_underscore_in_name" value="false"/>
+          </operator>
+          <operator activated="true" class="principal_component_analysis" compatibility="9.2.000" expanded="true" height="103" name="PCA (5)" width="90" x="179" y="34">
+            <parameter key="dimensionality_reduction" value="fixed number"/>
+            <parameter key="variance_threshold" value="0.8"/>
+            <parameter key="number_of_components" value="3"/>
+            <description align="center" color="transparent" colored="false" width="126">Perform a PCA.&lt;br&gt;Need to set parameters which determine how many of the principal components are to be retained -- either a fixed number, or based on proportion of variance.</description>
+          </operator>
+          <operator activated="true" class="rename_by_generic_names" compatibility="9.2.000" expanded="true" height="82" name="Rename by Generic Names (5)" width="90" x="380" y="34">
+            <parameter key="attribute_filter_type" value="all"/>
+            <parameter key="attribute" value=""/>
+            <parameter key="attributes" value=""/>
+            <parameter key="use_except_expression" value="false"/>
+            <parameter key="value_type" value="attribute_value"/>
+            <parameter key="use_value_type_exception" value="false"/>
+            <parameter key="except_value_type" value="time"/>
+            <parameter key="block_type" value="attribute_block"/>
+            <parameter key="use_block_type_exception" value="false"/>
+            <parameter key="except_block_type" value="value_matrix_row_start"/>
+            <parameter key="invert_selection" value="false"/>
+            <parameter key="include_special_attributes" value="false"/>
+            <parameter key="generic_name_stem" value="interestsPC"/>
+          </operator>
+          <connect from_port="exampleSet" to_op="Nominal to Numerical (2)" to_port="example set input"/>
+          <connect from_op="Nominal to Numerical (2)" from_port="example set output" to_op="PCA (5)" to_port="example set input"/>
+          <connect from_op="PCA (5)" from_port="example set output" to_op="Rename by Generic Names (5)" to_port="example set input"/>
+          <connect from_op="Rename by Generic Names (5)" from_port="example set output" to_port="example set"/>
+          <portSpacing port="source_exampleSet" spacing="0"/>
+          <portSpacing port="sink_example set" spacing="0"/>
+          <portSpacing port="sink_through 1" spacing="0"/>
+          <description align="left" color="yellow" colored="false" height="102" resized="false" width="126" x="366" y="138">Rename the principal components using a generic name stem</description>
+        </process>
+      </operator>
+      <operator activated="false" class="set_role" compatibility="9.2.000" expanded="true" height="82" name="Set Role" width="90" x="45" y="493">
+        <parameter key="attribute_name" value="TARGET_B"/>
+        <parameter key="target_role" value="label"/>
+        <list key="set_additional_roles"/>
+      </operator>
+      <operator activated="false" class="work_on_subset" compatibility="9.2.000" expanded="true" height="82" name="selectRF_census" width="90" x="246" y="493">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="TARGET_B|AC1|AC2|ADI|AFC1|AFC2|AFC3|AFC4|AFC5|AFC6|AGE|AGE901|AGE902|AGE903|AGE904|AGE905|AGE906|AGE907|AGEC1|AGEC2|AGEC3|AGEC4|AGEC5|AGEC6|AGEC7|ANC1|ANC10|ANC11|ANC12|ANC13|ANC14|ANC15|ANC2|ANC3|ANC4|ANC5|ANC6|ANC7|ANC8|ANC9|CHIL1|CHIL2|CHIL3|CHILC1|CHILC2|CHILC3|CHILC4|CHILC5|DMA|DW1|DW2|DW3|DW4|DW5|DW6|DW7|DW8|DW9|EC1|EC2|EC3|EC4|EC5|EC6|EC7|EC8|EIC1|EIC10|EIC11|EIC12|EIC13|EIC14|EIC15|EIC16|EIC2|EIC3|EIC4|EIC5|EIC6|EIC7|EIC8|EIC9|ETH1|ETH10|ETH11|ETH12|ETH13|ETH14|ETH15|ETH16|ETH2|ETH3|ETH4|ETH5|ETH6|ETH7|ETH8|ETH9|ETHC1|ETHC2|ETHC3|ETHC4|ETHC5|ETHC6|HC1|HC10|HC11|HC12|HC13|HC14|HC15|HC16|HC17|HC18|HC19|HC2|HC20|HC21|HC3|HC4|HC5|HC6|HC7|HC8|HC9|HHAGE1|HHAGE2|HHAGE3|HHAS1|HHAS2|HHAS3|HHAS4|HHD1|HHD10|HHD11|HHD12|HHD2|HHD3|HHD4|HHD5|HHD6|HHD7|HHD8|HHD9|HHN1|HHN2|HHN3|HHN4|HHN5|HHN6|HHP1|HHP2|HU1|HU2|HU3|HU4|HU5|HUPA1|HUPA2|HUPA3|HUPA4|HUPA5|HUPA6|HUPA7|HUR1|HUR2|HV1|HV2|HV3|HV4|HVP1|HVP2|HVP3|HVP4|HVP5|HVP6|IC1|IC10|IC11|IC12|IC13|IC14|IC15|IC16|IC17|IC18|IC19|IC2|IC20|IC21|IC22|IC23|IC3|IC4|IC5|IC6|IC7|IC8|IC9|LFC1|LFC10|LFC2|LFC3|LFC4|LFC5|LFC6|LFC7|LFC8|LFC9|LSC1|LSC2|LSC3|LSC4|MARR1|MARR2|MARR3|MARR4|MC1|MC2|MC3|MHUC1|MHUC2|MSA|OCC1|OCC10|OCC11|OCC12|OCC13|OCC2|OCC3|OCC4|OCC5|OCC6|OCC7|OCC8|OCC9|OEDC1|OEDC2|OEDC3|OEDC4|OEDC5|OEDC6|OEDC7|PEC1|PEC2|POBC1|POBC2|POP901|POP902|POP903|POP90C1|POP90C2|POP90C3|POP90C4|POP90C5|RHP1|RHP2|RHP3|RHP4|RP1|RP2|RP3|RP4|SEC1|SEC2|SEC3|SEC4|SEC5|TPE1|TPE10|TPE11|TPE12|TPE13|TPE2|TPE3|TPE4|TPE5|TPE6|TPE7|TPE8|TPE9|VC1|VC2|VC3|VC4|VOC1|VOC2|VOC3"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="true"/>
+        <parameter key="name_conflict_handling" value="error"/>
+        <parameter key="role_conflict_handling" value="error"/>
+        <parameter key="keep_subset_only" value="false"/>
+        <parameter key="deliver_inner_results" value="false"/>
+        <parameter key="remove_roles" value="false"/>
+        <process expanded="true">
+          <operator activated="true" class="concurrency:parallel_random_forest" compatibility="9.2.000" expanded="true" height="103" name="Random Forest" width="90" x="45" y="34">
+            <parameter key="number_of_trees" value="100"/>
+            <parameter key="criterion" value="information_gain"/>
+            <parameter key="maximal_depth" value="10"/>
+            <parameter key="apply_pruning" value="false"/>
+            <parameter key="confidence" value="0.25"/>
+            <parameter key="apply_prepruning" value="false"/>
+            <parameter key="minimal_gain" value="0.1"/>
+            <parameter key="minimal_leaf_size" value="2"/>
+            <parameter key="minimal_size_for_split" value="4"/>
+            <parameter key="number_of_prepruning_alternatives" value="3"/>
+            <parameter key="random_splits" value="false"/>
+            <parameter key="guess_subset_ratio" value="true"/>
+            <parameter key="subset_ratio" value="0.2"/>
+            <parameter key="voting_strategy" value="confidence vote"/>
+            <parameter key="use_local_random_seed" value="false"/>
+            <parameter key="local_random_seed" value="1992"/>
+            <parameter key="enable_parallel_execution" value="true"/>
+          </operator>
+          <operator activated="true" class="weight_by_forest" compatibility="9.2.000" expanded="true" height="82" name="Weight by Tree Importance" width="90" x="179" y="85">
+            <parameter key="criterion" value="gain_ratio"/>
+            <parameter key="normalize_weights" value="true"/>
+          </operator>
+          <operator activated="true" class="select_by_weights" compatibility="9.2.000" expanded="true" height="103" name="Select by Weights" width="90" x="313" y="34">
+            <parameter key="weight_relation" value="greater equals"/>
+            <parameter key="weight" value="0.19"/>
+            <parameter key="k" value="25"/>
+            <parameter key="p" value="0.2"/>
+            <parameter key="deselect_unknown" value="true"/>
+            <parameter key="use_absolute_weights" value="true"/>
+          </operator>
+          <operator activated="true" class="normalize" compatibility="7.5.003" expanded="true" height="103" name="Normalize" width="90" x="179" y="238">
+            <parameter key="return_preprocessing_model" value="false"/>
+            <parameter key="create_view" value="false"/>
+            <parameter key="attribute_filter_type" value="all"/>
+            <parameter key="attribute" value=""/>
+            <parameter key="attributes" value=""/>
+            <parameter key="use_except_expression" value="false"/>
+            <parameter key="value_type" value="numeric"/>
+            <parameter key="use_value_type_exception" value="false"/>
+            <parameter key="except_value_type" value="real"/>
+            <parameter key="block_type" value="value_series"/>
+            <parameter key="use_block_type_exception" value="false"/>
+            <parameter key="except_block_type" value="value_series_end"/>
+            <parameter key="invert_selection" value="false"/>
+            <parameter key="include_special_attributes" value="false"/>
+            <parameter key="method" value="Z-transformation"/>
+            <parameter key="min" value="0.0"/>
+            <parameter key="max" value="1.0"/>
+            <parameter key="allow_negative_values" value="false"/>
+          </operator>
+          <operator activated="true" class="principal_component_analysis" compatibility="9.2.000" expanded="true" height="103" name="PCA" width="90" x="313" y="238">
+            <parameter key="dimensionality_reduction" value="keep variance"/>
+            <parameter key="variance_threshold" value="0.75"/>
+            <parameter key="number_of_components" value="1"/>
+          </operator>
+          <operator activated="true" class="legacy:write_model" compatibility="9.2.000" expanded="true" height="68" name="Write Model" width="90" x="313" y="442">
+            <parameter key="model_file" value="E:\ids572\pva_kdd98\censusPCA.mod"/>
+            <parameter key="overwrite_existing_file" value="true"/>
+            <parameter key="output_type" value="XML Zipped"/>
+            <description align="center" color="transparent" colored="false" width="126">Write the PCA model to a file. We can then use this on new data.</description>
+          </operator>
+          <operator activated="true" class="rename_by_generic_names" compatibility="9.2.000" expanded="true" height="82" name="Rename by Generic Names" width="90" x="447" y="238">
+            <parameter key="attribute_filter_type" value="all"/>
+            <parameter key="attribute" value=""/>
+            <parameter key="attributes" value=""/>
+            <parameter key="use_except_expression" value="false"/>
+            <parameter key="value_type" value="attribute_value"/>
+            <parameter key="use_value_type_exception" value="false"/>
+            <parameter key="except_value_type" value="time"/>
+            <parameter key="block_type" value="attribute_block"/>
+            <parameter key="use_block_type_exception" value="false"/>
+            <parameter key="except_block_type" value="value_matrix_row_start"/>
+            <parameter key="invert_selection" value="false"/>
+            <parameter key="include_special_attributes" value="false"/>
+            <parameter key="generic_name_stem" value="censusPC_"/>
+          </operator>
+          <connect from_port="exampleSet" to_op="Random Forest" to_port="training set"/>
+          <connect from_op="Random Forest" from_port="model" to_op="Weight by Tree Importance" to_port="random forest"/>
+          <connect from_op="Random Forest" from_port="exampleSet" to_op="Select by Weights" to_port="example set input"/>
+          <connect from_op="Weight by Tree Importance" from_port="weights" to_op="Select by Weights" to_port="weights"/>
+          <connect from_op="Select by Weights" from_port="example set output" to_op="Normalize" to_port="example set input"/>
+          <connect from_op="Normalize" from_port="example set output" to_op="PCA" to_port="example set input"/>
+          <connect from_op="PCA" from_port="example set output" to_op="Rename by Generic Names" to_port="example set input"/>
+          <connect from_op="PCA" from_port="preprocessing model" to_op="Write Model" to_port="input"/>
+          <connect from_op="Rename by Generic Names" from_port="example set output" to_port="example set"/>
+          <portSpacing port="source_exampleSet" spacing="0"/>
+          <portSpacing port="sink_example set" spacing="0"/>
+          <portSpacing port="sink_through 1" spacing="0"/>
+          <description align="left" color="yellow" colored="false" height="157" resized="false" width="180" x="453" y="22">The operators on the left develop a random forest model, next obtain variable importance weights, and then select a subset of variables based on a user-specified minimum weight threshold.</description>
+          <description align="left" color="yellow" colored="false" height="118" resized="true" width="204" x="511" y="334">Perfrorm a PCA to check if we can obtain a reduced set of variables. &lt;br/&gt;Note - need to set suitable parameter to keep a sbset of PCAs.</description>
+        </process>
+      </operator>
+      <operator activated="false" class="map" compatibility="6.0.003" expanded="true" height="82" name="Map (2)" width="90" x="648" y="289">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="BIBLE|BOATS|CARDS|CATLG|CDPLAY|COLLECT1|CRAFTS|FISHER|GARDENIN|HOMEE|KIDSTUFF|PCOWNERS|PETS|PHOTO|PLATES|STEREO|VETERANS|WALKER"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <list key="value_mappings"/>
+        <parameter key="replace_what" value="?"/>
+        <parameter key="replace_by" value="N"/>
+        <parameter key="consider_regular_expressions" value="false"/>
+        <parameter key="add_default_mapping" value="false"/>
+      </operator>
+      <operator activated="false" class="replace_missing_values" compatibility="9.2.000" expanded="true" height="103" name="Replace Missing Values (4)" width="90" x="916" y="289">
+        <parameter key="return_preprocessing_model" value="false"/>
+        <parameter key="create_view" value="false"/>
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value="RFA_3"/>
+        <parameter key="attributes" value="RFA_3|RFA_4|RFA_5|RFA_6|RFA_7|RFA_8|RFA_9|RFA_10|RFA_11|RFA_12|RFA_13|RFA_14|RFA_15|RFA_16|RFA_17|RFA_18|RFA_19|RFA_20|RFA_21|RFA_22|RFA_23|RFA_24"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="default" value="value"/>
+        <list key="columns">
+          <parameter key="RFA_3" value="value"/>
+        </list>
+        <parameter key="replenishment_value" value="A1F"/>
+      </operator>
+      <operator activated="true" class="retrieve" compatibility="9.2.000" expanded="true" height="68" name="Retrieve pvaDataForModeling_Spr2019" width="90" x="45" y="34">
+        <parameter key="repository_entry" value="//Local Repository/pvaDataForModeling_Spr2019"/>
+      </operator>
+      <operator activated="true" class="select_attributes" compatibility="9.2.000" expanded="true" height="82" name="Remove Useless Select Attributes" width="90" x="179" y="34">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="ADATE_19|ADATE_20|ADATE_21|ADATE_22|ADATE_23|ADATE_24|ADATE_3|ADATE_4|ADATE_5|ADATE_6|ADATE_7|ADATE_8|ADATE_9|AGEFLAG|GEOCODE2|MAILCODE|MINRDATE|NEXTDATE|NOEXCH|ODATEDW|OSOURCE|RAMNT_14|RAMNT_15|RAMNT_17|RAMNT_24|RAMNT_3|RAMNT_4|RAMNT_5|RAMNT_6|RAMNT_7|RAMNT_9|RDATE_10|RDATE_11|RDATE_12|RDATE_13|RDATE_16|RDATE_17|RDATE_18|RDATE_19|RDATE_20|RDATE_21|RDATE_22|RDATE_23|RDATE_24|RDATE_3|RDATE_4|RDATE_5|STATE|TCODE|ZIP|PVASTATE|CHILD03|CHILD07|CHILD12|CHILD18|RECSWEEP|RECPGVG|RECP3|RECINHSE|RDATE_6|RDATE_7|RDATE_8|RDATE_9|RDATE_14|RDATE_15|MAJOR|RAMNT_10|RAMNT_11|RAMNT_13|RAMNT_19|RAMNT_20|RAMNT_21|RAMNT_23|GEOCODE|VOC2|VOC3|WEALTH1|TPE3|TPE4|TPE5|TPE6|TPE7|TPE8|TPE9|TPE10|TPE11|TPE12|TPE13|HC20|HC10|HC11|HC12|HC13|HC14|HC15|HC16|HC17|HC18|HC19|HC21|ADATE_2|ADATE_10|ADATE_11|ADATE_12|ADATE_13|ADATE_14|ADATE_15|ADATE_16|ADATE_17|ADATE_18|MDMAUD|MDMAUD_A|MDMAUD_F|MDMAUD_R|MBCRAFT|MBBOOKS|MBCOLECT|MBGARDEN|MAGFAML|MAGFEM|MAGMALE|PUBCULIN|PUBDOITY|PUBGARDN|PUBHLTH|PUBNEWFN|PUBOPP|PUBPHOTO|HPHONE_D|RAMNT_18|RAMNT_22|RAMNT_8|RAMNT_12|RAMNT_16|DATASRCE|LIFESRC|RFA_20|RFA_21|RFA_22|RFA_23|RFA_24|RFA_2|RFA_2A|RFA_2F|RFA_2R|RFA_3|RFA_4|RFA_5|RFA_6|RFA_7|RFA_8|RFA_9|RFA_10|RFA_11|RFA_12|RFA_13|RFA_14|RFA_15|RFA_16|RFA_17|RFA_18|RFA_19"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="true"/>
+        <parameter key="include_special_attributes" value="false"/>
+      </operator>
+      <operator activated="true" class="generate_attributes" compatibility="6.4.000" expanded="true" height="82" name="Generate Attributes (3)" width="90" x="380" y="34">
+        <list key="function_descriptions">
+          <parameter key="urbanicity" value="cut(DOMAIN, 0, 1)"/>
+          <parameter key="homeownr" value="if(HOMEOWNR==&quot;H&quot;, &quot;1&quot;, &quot;0&quot;)"/>
+          <parameter key="avgcresp" value="if (CARDPROM &gt; 0, CARDGIFT/CARDPROM, 0)"/>
+          <parameter key="avgallresp" value="if (NUMPROM &gt; 0, NGIFTALL/NUMPROM, 0)"/>
+          <parameter key="lastToMaxGiftRatio" value="if (MAXRAMNT&gt;0, LASTGIFT/MAXRAMNT, 0)"/>
+          <parameter key="maxToMinGiftRatio" value="if(MINRAMNT &gt; 0, MAXRAMNT/MINRAMNT, 0)"/>
+          <parameter key="domainSES" value="cut(DOMAIN,1,1)"/>
+          <parameter key="walker" value="if(WALKER==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="homee" value="if(HOMEE==&quot;Y&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="gender" value="if(GENDER==&quot;M&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="pepstrfl" value="if(PEPSTRFL==&quot;X&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="pcowners" value="if(PCOWNERS==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="boats" value="if(BOATS==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="cards" value="if(CARDS==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="catlg" value="if(CATLG==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="cdplay" value="if(CDPLAY==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="bible" value="if(BIBLE==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="pets" value="if(PETS==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="photo" value="if(PHOTO==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="plates" value="if(PLATES==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="collect1" value="if(COLLECT1==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="crafts" value="if(CRAFTS==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="fisher" value="if(FISHER==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="gardenin" value="if(GARDENIN==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="veterans" value="if(VETERANS==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="stereo" value="if(STEREO==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+          <parameter key="kidstuff" value="if(KIDSTUFF==&quot;1&quot;,&quot;1&quot;,&quot;0&quot;)"/>
+        </list>
+        <parameter key="keep_all" value="true"/>
+      </operator>
+      <operator activated="true" class="select_attributes" compatibility="9.2.000" expanded="true" height="82" name="Remove old attsSelect Attributes" width="90" x="514" y="34">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="ADATE_2|CHILD03|CHILD18|DOMAIN|FISTDATE|HOMEOWNR|LASTDATE|MAJOR|MAXADATE|MAXRDATE|PEPSTRFL|PVASTATE|RECINHSE|RECP3|RECSWEEP|RFA_2|BOATS|CDPLA1|CATLG|PLATES|CARDS|BIBLE|COLLECT1|VETERANS|HOMEE|PETS|STEREO|PCOWNERS|PHOTO|CRAFTS|FISHER|GARDENIN|WALKER|KIDSTUFF|GENDER"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="true"/>
+        <parameter key="include_special_attributes" value="false"/>
+      </operator>
+      <operator activated="true" class="map" compatibility="9.2.000" expanded="true" height="82" name="Map" width="90" x="581" y="136">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value="SOLIH"/>
+        <parameter key="attributes" value="SOLIH|SOLP3"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <list key="value_mappings"/>
+        <parameter key="replace_what" value="?"/>
+        <parameter key="replace_by" value="99"/>
+        <parameter key="consider_regular_expressions" value="false"/>
+        <parameter key="add_default_mapping" value="false"/>
+      </operator>
+      <operator activated="false" class="map" compatibility="9.2.000" expanded="true" height="82" name="Map (3)" width="90" x="715" y="238">
+        <parameter key="attribute_filter_type" value="single"/>
+        <parameter key="attribute" value="SOLP3"/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <list key="value_mappings"/>
+        <parameter key="replace_what" value="?"/>
+        <parameter key="replace_by" value="99"/>
+        <parameter key="consider_regular_expressions" value="false"/>
+        <parameter key="add_default_mapping" value="false"/>
+      </operator>
+      <operator activated="true" class="replace_missing_values" compatibility="9.2.000" expanded="true" height="103" name="Replace Missing Values" width="90" x="715" y="34">
+        <parameter key="return_preprocessing_model" value="false"/>
+        <parameter key="create_view" value="false"/>
+        <parameter key="attribute_filter_type" value="value_type"/>
+        <parameter key="attribute" value="AGE"/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="real"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="default" value="average"/>
+        <list key="columns"/>
+        <parameter key="replenishment_value" value="-1"/>
+      </operator>
+      <operator activated="true" class="replace_missing_values" compatibility="9.2.000" expanded="true" height="103" name="Replace Missing Values (3)" width="90" x="849" y="34">
+        <parameter key="return_preprocessing_model" value="false"/>
+        <parameter key="create_view" value="false"/>
+        <parameter key="attribute_filter_type" value="value_type"/>
+        <parameter key="attribute" value="domain"/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="integer"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="default" value="average"/>
+        <list key="columns">
+          <parameter key="domain" value="value"/>
+        </list>
+        <parameter key="replenishment_value" value="Z"/>
+      </operator>
+      <operator activated="true" class="impute_missing_values" compatibility="9.2.000" expanded="true" height="68" name="Impute Missing Values" width="90" x="983" y="187">
+        <parameter key="attribute_filter_type" value="subset"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value="urbanicity|domainSES"/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="attribute_value"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="time"/>
+        <parameter key="block_type" value="attribute_block"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_matrix_row_start"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="iterate" value="false"/>
+        <parameter key="learn_on_complete_cases" value="true"/>
+        <parameter key="order" value="number of missing values"/>
+        <parameter key="sort" value="ascending"/>
+        <parameter key="use_local_random_seed" value="false"/>
+        <parameter key="local_random_seed" value="1992"/>
+        <process expanded="true">
+          <operator activated="true" class="k_nn" compatibility="9.2.000" expanded="true" height="82" name="k-NN" width="90" x="179" y="34">
+            <parameter key="k" value="10"/>
+            <parameter key="weighted_vote" value="false"/>
+            <parameter key="measure_types" value="MixedMeasures"/>
+            <parameter key="mixed_measure" value="MixedEuclideanDistance"/>
+            <parameter key="nominal_measure" value="NominalDistance"/>
+            <parameter key="numerical_measure" value="EuclideanDistance"/>
+            <parameter key="divergence" value="GeneralizedIDivergence"/>
+            <parameter key="kernel_type" value="radial"/>
+            <parameter key="kernel_gamma" value="1.0"/>
+            <parameter key="kernel_sigma1" value="1.0"/>
+            <parameter key="kernel_sigma2" value="0.0"/>
+            <parameter key="kernel_sigma3" value="2.0"/>
+            <parameter key="kernel_degree" value="3.0"/>
+            <parameter key="kernel_shift" value="1.0"/>
+            <parameter key="kernel_a" value="1.0"/>
+            <parameter key="kernel_b" value="0.0"/>
+          </operator>
+          <connect from_port="example set source" to_op="k-NN" to_port="training set"/>
+          <connect from_op="k-NN" from_port="model" to_port="model sink"/>
+          <portSpacing port="source_example set source" spacing="0"/>
+          <portSpacing port="sink_model sink" spacing="0"/>
+        </process>
+      </operator>
+      <connect from_op="Retrieve pvaDataPreProcessed_1" from_port="output" to_op="Replace Missing Values (2)" to_port="example set input"/>
+      <connect from_op="Replace Missing Values (2)" from_port="example set output" to_op="Generate Attributes" to_port="example set input"/>
+      <connect from_op="Generate Attributes" from_port="example set output" to_op="Replace Missing Values (5)" to_port="example set input"/>
+      <connect from_op="Replace Missing Values (5)" from_port="example set output" to_op="Nominal to Numerical" to_port="example set input"/>
+      <connect from_op="Nominal to Numerical" from_port="example set output" to_op="Select Attributes (3)" to_port="example set input"/>
+      <connect from_op="Select Attributes (3)" from_port="example set output" to_op="Validation" to_port="training"/>
+      <connect from_op="interests_PCA" from_port="example set" to_op="Set Role" to_port="example set input"/>
+      <connect from_op="Set Role" from_port="example set output" to_op="selectRF_census" to_port="example set"/>
+      <connect from_op="Retrieve pvaDataForModeling_Spr2019" from_port="output" to_op="Remove Useless Select Attributes" to_port="example set input"/>
+      <connect from_op="Remove Useless Select Attributes" from_port="example set output" to_op="Generate Attributes (3)" to_port="example set input"/>
+      <connect from_op="Generate Attributes (3)" from_port="example set output" to_op="Remove old attsSelect Attributes" to_port="example set input"/>
+      <connect from_op="Remove old attsSelect Attributes" from_port="example set output" to_op="Map" to_port="example set input"/>
+      <connect from_op="Map" from_port="example set output" to_op="Replace Missing Values" to_port="example set input"/>
+      <connect from_op="Replace Missing Values" from_port="example set output" to_op="Replace Missing Values (3)" to_port="example set input"/>
+      <connect from_op="Replace Missing Values (3)" from_port="example set output" to_op="Impute Missing Values" to_port="example set in"/>
+      <connect from_op="Impute Missing Values" from_port="example set out" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <description align="left" color="yellow" colored="false" height="120" resized="true" width="228" x="308" y="114">Generate new attributes that&lt;br&gt;modify the values of some&lt;br&gt;existing attributes.&lt;br&gt;For eg. RECP3 has 'X' is some&lt;br&gt;rows and is empty elsewhere.&lt;br&gt;The new attribute set a value of&lt;br&gt;1 where there is an 'X', and 0&lt;br&gt;elsewhere.</description>
+      <description align="left" color="yellow" colored="true" height="72" resized="true" width="164" x="112" y="129">Removes/deselects some&lt;br&gt;attributes that we do not&lt;br&gt;'think'(!!) will be useful.&lt;br&gt;</description>
+      <description align="left" color="yellow" colored="false" height="71" resized="true" width="205" x="579" y="138">De-select/remove the old&lt;br&gt;attributes corresponding to the&lt;br&gt;new attributes generated.&lt;br&gt;</description>
+      <description align="left" color="yellow" colored="false" height="136" resized="true" width="146" x="12" y="326">Certain attributes have a 'Y' value&lt;br&gt;indicating presence and are empty&lt;br&gt;(missing, or ? value) elsewhere. So we&lt;br&gt;map the '?' to 'N'.</description>
+      <description align="left" color="yellow" colored="false" height="95" resized="true" width="141" x="174" y="338">Replace missing values for numeric&lt;br&gt;attributes by -1. Need to be careful --&lt;br&gt;do we want -1 for all numeric values&lt;br&gt;that are missing ? Can use different&lt;br&gt;values (or mean, median,...) for one&lt;br&gt;or a selected subset of attributes.</description>
+      <description align="left" color="yellow" colored="false" height="114" resized="true" width="274" x="480" y="381">Here we work on a subset of variables(or&lt;br&gt;attributes). We select a subset of attributes&lt;br&gt;'into' this compound operator (i.e. there are&lt;br&gt;other operators inside this operator).&lt;br&gt;We will perform a PCA on this subset of&lt;br&gt;attributes.</description>
+      <description align="left" color="yellow" colored="false" height="121" resized="true" width="295" x="90" y="585">Select a set of census variables into this operator. Inside, we will develop a random forest to selet which variables are useful. Then, we can perform a PCA on these selected variables, so that we get a reduced set of census-related variables which are useful for predictiong the target.</description>
+      <description align="left" color="yellow" colored="false" height="259" resized="true" width="346" x="644" y="601">One (potentially interesting??) way to impute missing values. There are missing values in some variables like CLUSTER, DOMAIN, Urbanicity which can be of potential interest. Rather than fill in missing values with the medain (or some aggregate from all non-missing values), we can consider a neighborhood of the data point whic has some value missinghand fill this in using the median (or mean, etc) of values from other data points in the neighborhood.&lt;br/&gt;&lt;br/&gt;If we think that the attributes with missing values may relate to census data, the we can consider neighborhoods defined by distance on certain census variables.</description>
+      <description align="left" color="purple" colored="true" height="175" resized="false" width="180" x="313" y="758">Remember that these operators and variables used are just examples to help you get started.&lt;br&gt;&lt;br&gt;Do you notice the final model performance to be quite good ...maybe too good (why?)</description>
+      <description align="left" color="blue" colored="true" height="121" resized="false" width="180" x="427" y="551">After preprocessing, you can save the data ( right-click the output port, Save Exampleset As). Then use this saved dataset for further analyses.</description>
+    </process>
+  </operator>
+</process>
